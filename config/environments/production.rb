@@ -103,4 +103,19 @@ Rails.application.configure do
   config.action_mailbox.ingress = ENV.fetch('RAILS_INBOUND_EMAIL_SERVICE', 'relay').to_sym
 
   Rails.application.routes.default_url_options = { host: ENV['FRONTEND_URL'] }
+
+  config.action_mailer.smtp_settings = {
+  address: 'vps-1581068-x.dattaweb.com',
+  port: 587,
+  domain: 'crm-city.com',
+  user_name: 'contact@crm-city.com',
+  password: 'z1t*mCX7mS',
+  authentication: 'login',
+  enable_starttls_auto: true
+  }
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { host: 'dattaweb.com' }
 end
